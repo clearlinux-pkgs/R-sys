@@ -4,13 +4,15 @@
 #
 Name     : R-sys
 Version  : 3.1
-Release  : 5
+Release  : 6
 URL      : https://cran.r-project.org/src/contrib/sys_3.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sys_3.1.tar.gz
 Summary  : Powerful and Reliable Tools for Running System Commands in R
 Group    : Development/Tools
 License  : MIT
 Requires: R-sys-lib = %{version}-%{release}
+Requires: R-assertthat
+BuildRequires : R-assertthat
 BuildRequires : buildreq-R
 
 %description
@@ -35,10 +37,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552261986
+export SOURCE_DATE_EPOCH=1552800985
 
 %install
-export SOURCE_DATE_EPOCH=1552261986
+export SOURCE_DATE_EPOCH=1552800985
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -74,8 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library sys|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  sys || :
 
 
 %files
@@ -102,11 +103,17 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/sys/help/sys.rdx
 /usr/lib64/R/library/sys/html/00Index.html
 /usr/lib64/R/library/sys/html/R.css
-/usr/lib64/R/library/sys/libs/symbols.rds
+/usr/lib64/R/library/sys/tests/spelling.R
+/usr/lib64/R/library/sys/tests/testthat.R
+/usr/lib64/R/library/sys/tests/testthat/test-binary.R
+/usr/lib64/R/library/sys/tests/testthat/test-encoding.R
+/usr/lib64/R/library/sys/tests/testthat/test-error.R
+/usr/lib64/R/library/sys/tests/testthat/test-quote.R
+/usr/lib64/R/library/sys/tests/testthat/test-stdin.R
+/usr/lib64/R/library/sys/tests/testthat/test-stdout.R
+/usr/lib64/R/library/sys/tests/testthat/test-timeout.R
 /usr/lib64/R/library/sys/utf8.txt
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/sys/libs/sys.so
-/usr/lib64/R/library/sys/libs/sys.so.avx2
-/usr/lib64/R/library/sys/libs/sys.so.avx512
