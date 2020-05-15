@@ -4,10 +4,10 @@
 #
 Name     : R-sys
 Version  : 3.3
-Release  : 17
+Release  : 18
 URL      : https://cran.r-project.org/src/contrib/sys_3.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sys_3.3.tar.gz
-Summary  : Drop-in replacements for the base system2() function with fine control and consistent behavior across platforms.
+Summary  : Powerful and Reliable Tools for Running System Commands in R
 Group    : Development/Tools
 License  : MIT
 Requires: R-sys-lib = %{version}-%{release}
@@ -29,21 +29,22 @@ lib components for the R-sys package.
 
 %prep
 %setup -q -c -n sys
+cd %{_builddir}/sys
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566486843
+export SOURCE_DATE_EPOCH=1589510122
 
 %install
-export SOURCE_DATE_EPOCH=1566486843
+export SOURCE_DATE_EPOCH=1589510122
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
