@@ -5,7 +5,7 @@
 #
 Name     : R-sys
 Version  : 3.4.2
-Release  : 41
+Release  : 42
 URL      : https://cran.r-project.org/src/contrib/sys_3.4.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sys_3.4.2.tar.gz
 Summary  : Powerful and Reliable Tools for Running System Commands in R
